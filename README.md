@@ -1,6 +1,6 @@
 # Koa & Typescript 项目模板
 
-项目徽章：[![Build's Idea](http://brand.phodal.com/shields/idea-small.svg)](http://ideas.phodal.com/)
+项目徽章：[![Badge](https://img.shields.io/badge/TPL-koa--template--ts-blue)](https://github.com/EsunR/koa-template-ts)
 
 ## 模板已支持
 
@@ -8,7 +8,8 @@
 - koa-router
 - koa-static 静态目录访问
 - koa-cors CORS 跨域资源共享，默认无限制
-- koa-compress 让 Koa 项目支持 G-zip 压缩
+- 开启 G-zip 压缩
+- 控制台日志
 - 错误的集中处理方案 [实现方案](https://blog.esunr.xyz/2019/11/koa%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88/)
 - 集成 Prettier 与 ESLint 代码检查规则
 
@@ -37,15 +38,44 @@
 
 ## cli 指令
 
+安装依赖：
+
+```sh
+$ npm install
+```
+
 编译为 Javascript：
 
-```js
-npm run build
+```sh
+$ npm run build
 ```
 
 开发模式（热更新模式）：
 
-```js
-npm run dev
+```sh
+$ npm run dev
 ```
 
+## 运行测试
+
+命令行工具输入：
+
+```sh
+$ npm run dev
+```
+
+出现如下提示，说明连接成功：
+
+![](http://img.cdn.esunr.xyz/markdown/20200330103338.png)
+
+访问 `localhost:9090` 如果出现如下界面说明 Koa 静态文件访问服务正常：
+
+![](http://img.cdn.esunr.xyz/markdown/20200330105130.png)
+
+访问 `localhost:9090/api/test/success` 如果出现如下界面说明 api 服务正常：
+
+![](http://img.cdn.esunr.xyz/markdown/20200330110550.png)
+
+访问 `localhost:9090/api/test/error` 如果出现如下界面说明错误捕获正常：
+
+![](http://img.cdn.esunr.xyz/markdown/20200330110635.png)

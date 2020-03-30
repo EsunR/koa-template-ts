@@ -5,25 +5,33 @@ import cors from "@koa/cors"
 import KoaBody from "koa-body"
 import errorHandler from "./middle/error_handler"
 import dbGenerator from "./db/db_generator"
-import koaStatic from "koa-static"
+import KoaStatic from "koa-static"
 import path from "path"
-import koaCompress from "koa-compress"
+import KoaLogger from "koa-logger"
 
 const app: Koa = new Koa()
 const router: Router = new Router()
 
-// Database
+// Database 不需要数据库的项目直接注释掉下一行，可选择删除 db 层代码
 dbGenerator()
 
-// Middle Wear
+// log
+app.use(KoaLogger())
+
+// 错误处理
 app.use(errorHandler())
-app.use(cors())
-app.use(koaCompress({ threshold: 2048 }))
+
+// 静态文件服务
 app.use(
-  koaStatic(path.join(__dirname, "../static"), {
+  KoaStatic(path.join(__dirname, "../static"), {
     gzip: true
   })
 )
+
+// CORS
+app.use(cors())
+
+// 解析 HTTP Body
 app.use(
   KoaBody({
     multipart: true,
@@ -34,10 +42,9 @@ app.use(
 )
 
 // Router
-router.get("/api/test", async (ctx: Koa.Context, next: Koa.Next) => {
-  ctx.body = "api serve is ok!"
-  await next()
-})
+import testRouter from "./routers/test_router"
+router.use("/api/test", testRouter.routes())
+
 app.use(router.routes()).use(router.allowedMethods())
 
 // Listen
