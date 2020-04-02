@@ -35,6 +35,7 @@
 
 - [QiniuManager 第三方七牛云上传管理器](https://github.com/EsunR/QiniuManager)
 - [DormitoryManagement 基于Vue的宿舍管理系统（ES6实现）](https://github.com/EsunR/DormitoryManagement)
+- [引用文献格式生成工具](https://github.com/EsunR/ReferenceFormatGenerator)
 
 ## cli 指令
 
