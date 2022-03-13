@@ -1,10 +1,10 @@
 export const sysConfig = {
-  port: 9090
+  port: 9091,
 }
 
 export const databaseConfig = {
   host: "localhost",
-  name: "table_name",
+  name: "vue_login",
   user: "root",
-  password: "root"
+  password: "66812652j",
 }

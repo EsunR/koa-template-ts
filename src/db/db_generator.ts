@@ -1,6 +1,6 @@
 import db from "./index"
 
-export default function() {
+export default function () {
   db.sequelize.sync()
   db.connectTest()
 }

@@ -10,7 +10,7 @@ class Db {
     const { host, name, user, password } = databaseConfig
     const sequelize = new Sequelize(name, user, password, {
       host: host,
-      dialect: "mysql"
+      dialect: "mysql",
     })
     return sequelize
   }

@@ -1,8 +1,8 @@
 import Koa from "koa"
 import ResBody from "../struct/ResBody"
 
-export default function() {
-  return async function(ctx: Koa.Context, next: Koa.Next) {
+export default function () {
+  return async function (ctx: Koa.Context, next: Koa.Next) {
     try {
       await next()
     } catch (err) {
@@ -18,7 +18,7 @@ export default function() {
         // 返回错误
         ctx.body = new ResBody({
           success: false,
-          msg: err.message
+          msg: err.message,
         })
         ctx.app.emit("error", err, ctx)
       }
