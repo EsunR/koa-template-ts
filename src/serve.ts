@@ -13,7 +13,7 @@ const app: Koa = new Koa()
 const router: Router = new Router()
 
 // Database 不需要数据库的项目直接注释掉下一行，可选择删除 db 层代码
-dbGenerator()
+// dbGenerator()
 
 // log
 app.use(KoaLogger())
