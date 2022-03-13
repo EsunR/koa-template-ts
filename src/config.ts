@@ -4,7 +4,7 @@ export const sysConfig = {
 
 export const databaseConfig = {
   host: "localhost",
-  name: "qiniu",
+  name: "table_name",
   user: "root",
   password: "root"
 }

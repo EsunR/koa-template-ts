@@ -10,6 +10,8 @@ router.get("/success", async ctx => {
 })
 
 router.get("/error", async ctx => {
+  try {
+  } catch (error) {}
   throw new Error("500-未知错误")
 })
 
