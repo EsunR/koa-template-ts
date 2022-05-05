@@ -7,15 +7,17 @@
 - koa
 - koa-router
 - koa-static 静态目录访问
+- 使用 sequelize 管理数据库（选择性启用）
 - koa-cors CORS 跨域资源共享，默认无限制
 - 开启 G-zip 压缩
 - 控制台日志
 - 错误的集中处理方案 [实现方案](https://blog.esunr.xyz/2019/11/koa%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88/)
 - 集成 Prettier 与 ESLint 代码检查规则
+- 集成 module-alias
 
-## 模板设计思想
+## 模板设计
 
-采用 MVC 分层的思想，目录结构如下：
+目录结构如下：
 
 ```
 + src
@@ -37,46 +39,35 @@
 - [DormitoryManagement 基于Vue的宿舍管理系统（ES6实现）](https://github.com/EsunR/DormitoryManagement)
 - [引用文献格式生成工具](https://github.com/EsunR/ReferenceFormatGenerator)
 
-## cli 指令
+## 运行
+
+> 请使用 yarn 进行安装
 
 安装依赖：
 
 ```sh
-$ npm install
+$ yarn
+```
+
+开发模式：
+
+```sh
+$ yarn dev
 ```
 
 编译为 Javascript：
 
 ```sh
-$ npm run build
+$ yarn build
 ```
 
-开发模式（热更新模式）：
+## 部署
+
+推荐使用 pm2 管理项目，项目已内置 `ecosystem` 脚本，直接调用 pm2 执行该脚本即可（会使用 ts-node 运行项目，因此不需要编译为 js）：
 
 ```sh
-$ npm run dev
+# 全局安装 pm2
+npm install pm2 -g
+# 使用 pm2 运行应用
+pm2 start ./ecosystem.config.js
 ```
-
-## 运行测试
-
-命令行工具输入：
-
-```sh
-$ npm run dev
-```
-
-出现如下提示，说明连接成功：
-
-![](http://img.cdn.esunr.xyz/markdown/20200330103338.png)
-
-访问 `localhost:9090` 如果出现如下界面说明 Koa 静态文件访问服务正常：
-
-![](http://img.cdn.esunr.xyz/markdown/20200330105130.png)
-
-访问 `localhost:9090/api/test/success` 如果出现如下界面说明 api 服务正常：
-
-![](http://img.cdn.esunr.xyz/markdown/20200330110550.png)
-
-访问 `localhost:9090/api/test/error` 如果出现如下界面说明错误捕获正常：
-
-![](http://img.cdn.esunr.xyz/markdown/20200330110635.png)

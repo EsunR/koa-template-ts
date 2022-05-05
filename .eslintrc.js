@@ -4,10 +4,10 @@ module.exports = {
   plugins: ["prettier", "@typescript-eslint"],
   parserOptions: {
     sourceType: "module",
-    ecmaVersion: 2015
+    ecmaVersion: 2015,
   },
   env: {
-    browser: true
+    browser: true,
   },
   rules: {
     // 启用 prettier
@@ -18,8 +18,8 @@ module.exports = {
     "getter-return": [
       "error",
       {
-        allowImplicit: false
-      }
+        allowImplicit: false,
+      },
     ],
     // 禁止将 await 写在循环里，因为这样就无法同时发送多个异步请求了
     // @off 要求太严格了，有时需要在循环中写 await
@@ -35,8 +35,8 @@ module.exports = {
     "no-constant-condition": [
       "error",
       {
-        checkLoops: false
-      }
+        checkLoops: false,
+      },
     ],
     // 禁止在正则表达式中出现 Ctrl 键的 ASCII 表示，即禁止使用 /\x1f/
     // 开启此规则，因为字符串中一般不会出现 Ctrl 键，所以一旦出现了，可能是一个代码错误
@@ -50,6 +50,6 @@ module.exports = {
     // 不允许使用分号
     semi: ["error", "never"],
     // 必须使用双引号包裹字符串
-    quotes: ["error", "double"]
-  }
-};
+    quotes: ["error", "double"],
+  },
+}

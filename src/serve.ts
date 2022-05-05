@@ -1,20 +1,26 @@
+// module alisa register
 import "module-alias/register"
-import { sysConfig } from "./config"
+import moduleAlias from "module-alias"
+import path from "path"
+moduleAlias.addAliases({
+  "@": path.resolve(__dirname, "./"),
+})
+// import es module
+import { sysConfig } from "@/config"
 import Koa from "koa"
 import Router from "koa-router"
 import cors from "@koa/cors"
 import KoaBody from "koa-body"
-import errorHandler from "./middle/error_handler"
-import dbGenerator from "@/db/db_generator"
+import errorHandler from "@/middle/error_handler"
 import KoaStatic from "koa-static"
-import path from "path"
 import KoaLogger from "koa-logger"
 
 const app: Koa = new Koa()
 const router: Router = new Router()
 
-// Database 不需要数据库的项目直接注释掉下一行，可选择删除 db 层代码
-dbGenerator()
+// 需要数据库连接可选择接触该行注释
+// import dbGenerator from "@/db/db_generator"
+// dbGenerator()
 
 // log
 app.use(KoaLogger())
@@ -43,7 +49,7 @@ app.use(
 )
 
 // Router
-import testRouter from "./routers/test_router"
+import testRouter from "@/routers/test"
 router.use("/api/test", testRouter.routes())
 
 app.use(router.routes()).use(router.allowedMethods())
